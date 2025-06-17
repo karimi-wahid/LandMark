@@ -4,28 +4,28 @@ import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
-import { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+// import { useEffect, useState } from "react";
+// import { useSearchParams, useRouter } from "next/navigation";
 export default function Header() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState("");
+  // const searchParams = useSearchParams();
+  // const router = useRouter();
+  // const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(searchParams);
-    const searchTermFromUrl = urlParams.get("searchTerm");
-    if (searchTermFromUrl) {
-      setSearchTerm(searchTermFromUrl);
-    }
-  }, [searchParams]);
+  // useEffect(() => {
+  //   const urlParams = new URLSearchParams(searchParams);
+  //   const searchTermFromUrl = urlParams.get("searchTerm");
+  //   if (searchTermFromUrl) {
+  //     setSearchTerm(searchTermFromUrl);
+  //   }
+  // }, [searchParams]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const urlParams = new URLSearchParams(searchParams);
-    urlParams.set("searchTerm", searchTerm);
-    const searchQuery = urlParams.toString();
-    router.push(`/search?${searchQuery}`);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const urlParams = new URLSearchParams(searchParams);
+  //   urlParams.set("searchTerm", searchTerm);
+  //   const searchQuery = urlParams.toString();
+  //   router.push(`/search?${searchQuery}`);
+  // };
 
   return (
     <header className="bg-slate-200 shadow-md">
@@ -36,15 +36,11 @@ export default function Header() {
             <span className="text-slate-700">Mark</span>
           </h1>
         </Link>
-        <form
-          className="bg-slate-100 p-3 rounded-lg flex items-center"
-          onSubmit={handleSubmit}>
+        <form className="bg-slate-100 p-3 rounded-lg flex items-center">
           <input
             type="text"
             placeholder="Search..."
             className="bg-transparent focus:outline-none w-24 sm:w-64"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button>
             <FaSearch className="text-slate-600" />
