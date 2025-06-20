@@ -35,3 +35,12 @@ export const createOrUpdateUser = async ({
     throw error;
   }
 };
+
+export const deleteUser = async (id: string) => {
+  try {
+    await connect();
+    await User.findOneAndDelete({ clerkId: id });
+  } catch (error) {
+    console.log("Error: Could not delete user:", error);
+  }
+};
